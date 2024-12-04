@@ -1,15 +1,7 @@
 def load_data(path):
     with open(path, "r") as file:
         lines = file.readlines()
-    data2d = []
-    for i in range(len(lines)):
-        ls = list(lines[i])
-        els = []
-        for j in range(len(ls)):
-            if ls[j] != "\n":
-                els.append(ls[j])
-        data2d.append(els)
-    return data2d
+    return [list(line.strip()) for line in lines]
 
 
 def solution(data):
