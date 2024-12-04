@@ -14,61 +14,30 @@ def load_data(path):
 
 def solution(data):
     times = 0
-    test = 0
+
+    directions = [
+        (0, 1),
+        (0, -1),
+        (1, 0),
+        (-1, 0),
+        (-1, -1),
+        (-1, 1),
+        (1, 1),
+        (1, -1)
+    ]
+
     for i in range(len(data)):
         for j in range(len(data[0])):
             if data[i][j] == "X":
-                try:
-                    s = ''.join(data[i][j:j+4])
-                    if s == "XMAS":
-                        times += 1
-                except:
-                    pass
-                try:
-                    s = ''.join(data[i][j-3:j+1])
-                    if s == "SAMX":
-                        times += 1
-                except:
-                    pass
-                try:
-                    s = ''.join([data[i+n][j] for n in range(4)])
-                    if s == "XMAS":
-                        times += 1
-                except:
-                    pass
-                try:
-                    s = ''.join([data[i-n][j] for n in range(4) if i-n>=0])
-                    if s == "XMAS":
-                        times += 1
-                except:
-                    pass
-                try:
-                    s = ''.join([data[i-n][j-n] for n in range(4) if (i-n>=0 and j-n>=0)])
-                    if s == "XMAS":
-                        times += 1
-                except:
-                    pass
-                try:
-                    s = ''.join([data[i-n][j+n] for n in range(4) if i-n>=0])
-                    if s == "XMAS":
-                        times += 1
-                except:
-                    pass
-                try:
-                    s = ''.join([data[i+n][j+n] for n in range(4)])
-                    if s == "XMAS":
-                        times += 1
-                except:
-                    pass
-                try:
-                    s = ''.join([data[i+n][j-n] for n in range(4) if j-n>=0])
-                    if s == "XMAS":
-                        times += 1
-                except:
-                    pass
-            if times > test:
-                print(i,j, times-test)
-                test = times
+                for dr, dc in directions:
+                    try:
+                        s = ''.join(data[i + n * dr][j + n * dc] for n in range(4)
+                                    if ((i + n * dr) >= 0 and (j + n * dc) >= 0))
+                        if s == "XMAS":
+                            times += 1
+                    except IndexError:
+                        continue
+
     return times
 
 
