@@ -1,8 +1,7 @@
 def load_data(path):
     with open(path, "r") as file:
         lines = file.readlines()
-    lines = [line.strip() for line in lines]
-    return lines
+    return [line.strip() for line in lines]
 
 def solution(data):
     data2d = [d.split() for d in data]

@@ -1,8 +1,7 @@
 def load_data(path):
     with open(path, "r") as file:
         lines = file.readlines()
-    lines = [line.strip() for line in lines]
-    return lines
+    return [line.strip() for line in lines]
 
 def sort_list(l):
     l_r = [l.pop(l.index(min(l))) for _ in range(len(l))]

@@ -2,17 +2,15 @@ import re
 
 def load_data(path):
     with open(path, "r") as file:
-        lines = file.readlines()
-    lines = [line.strip() for line in lines]
+        lines = file.read()
     return lines
 
 
 def solution(data):
     summ = 0
-    for i in data:
-        ls = re.findall(r"mul\((\d{1,3}),(\d{1,3})\)",i)
-        for a,b in ls:
-            summ += int(a)*int(b)
+    ls = re.findall(r"mul\((\d{1,3}),(\d{1,3})\)",data)
+    for a,b in ls:
+        summ += int(a)*int(b)
     return summ
 
 
