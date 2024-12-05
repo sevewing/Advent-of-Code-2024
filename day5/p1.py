@@ -37,7 +37,6 @@ def solution(data):
             if check(line.copy(), rule):
                 mids.append(int(line[int(len(line)/2)]))
     
-    print(mids)
     return sum(mids)
 
 
