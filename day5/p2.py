@@ -1,6 +1,3 @@
-import re
-import random
-
 def load_data(path):
     with open(path, "r") as file:
         lines = file.readlines()
@@ -26,7 +23,6 @@ def get_issue(line, rule):
             if line[j] in list(rule.keys()) and line[i] in rule[line[j]]:
                 return [i, j]
     return
-   
 
 def solution(data):
     rule = {}

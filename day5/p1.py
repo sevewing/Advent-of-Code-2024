@@ -1,5 +1,3 @@
-import re
-
 def load_data(path):
     with open(path, "r") as file:
         lines = file.readlines()
